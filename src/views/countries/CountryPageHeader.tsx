@@ -22,7 +22,7 @@ const CountryPageHeader = () => {
           New
         </Button>
       </Box>
-      <Typography variant='body2'>Insert, Update or Delete Countries Here</Typography>
+      <Typography variant='body2'>Insert, Update or Delete Countries</Typography>
     </Fragment>
   )
 }

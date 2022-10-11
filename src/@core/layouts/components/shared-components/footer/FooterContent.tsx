@@ -11,14 +11,14 @@ const FooterContent = () => {
 
   return (
     <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
-      <Typography sx={{ mr: 2 }}>
+      <Typography sx={{ mr: 2, fontSize: 14 }}>
         {`© ${new Date().getFullYear()}, Made with `}
         <Box component='span' sx={{ color: 'error.main' }}>
           ❤️
         </Box>
         {` by `}
         <Link target='_blank' href='http://sunbeamsoft.com/'>
-          SunBeam Software
+          Sunbeam Software
         </Link>
       </Typography>
       {/* {hidden ? null : (
