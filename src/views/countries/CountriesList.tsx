@@ -20,8 +20,8 @@ import Swal from 'sweetalert2'
 const columns: readonly TableHeader[] = [
   { id: 'sl', label: 'SL#', headerAlign: 'center', dataAlign: 'center' },
   { id: 'countryName', label: 'Name', headerAlign: 'center', dataAlign: 'center' },
-  { id: 'countryNameUC', label: 'Code', headerAlign: 'center', dataAlign: 'center' },
-  { id: 'countryShortCode', label: 'Short Code', headerAlign: 'center', dataAlign: 'center' },
+  { id: 'countryNameBN', label: 'Name BN', headerAlign: 'center', dataAlign: 'center' },
+  { id: 'countryCode', label: 'Short Code', headerAlign: 'center', dataAlign: 'center' },
   { id: 'action', label: 'Action', headerAlign: 'center', dataAlign: 'center' }
 ]
 
@@ -40,12 +40,12 @@ const CountriesList = () => {
     setRowsPerPage(+event.target.value)
     setPage(0)
   }
-  async function handleClickEdit(countryID: number) {
-    await getSingleData(countryID)
+  async function handleClickEdit(countryId: number) {
+    await getSingleData(countryId)
     handleModal()
   }
 
-  const handleClickDelete = (countryID: number) => {
+  const handleClickDelete = (countryId: number) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -57,7 +57,7 @@ const CountriesList = () => {
     }).then(result => {
       debugger
       if (result.isConfirmed) {
-        removeData(countryID)
+        removeData(countryId)
         Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
       }
     })
@@ -65,7 +65,7 @@ const CountriesList = () => {
 
   useEffect(() => {
     getData()
-  }, [getData])
+  },[])
 
   return (
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -87,7 +87,7 @@ const CountriesList = () => {
           <TableBody>
             {dataState.countries.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row, index) => {
               return (
-                <TableRow hover role='checkbox' tabIndex={-1} key={row.countryID}>
+                <TableRow hover role='checkbox' tabIndex={-1} key={row.countryId}>
                   {columns.map(column => {
                     type ObjectKey = keyof typeof row
                     const isActionHead = column.id == 'action' ? true : false
@@ -106,7 +106,7 @@ const CountriesList = () => {
                           aria-label='edit'
                           component='label'
                           title='Edit'
-                          onClick={() => handleClickEdit(row.countryID)}
+                          onClick={() => handleClickEdit(row.countryId)}
                         >
                           <FileEdit fontSize='small' />
                         </IconButton>
@@ -116,7 +116,7 @@ const CountriesList = () => {
                           aria-label='delete'
                           component='label'
                           title='Delete'
-                          onClick={() => handleClickDelete(row.countryID)}
+                          onClick={() => handleClickDelete(row.countryId)}
                         >
                           <TrashCanOutline fontSize='small' />
                         </IconButton>

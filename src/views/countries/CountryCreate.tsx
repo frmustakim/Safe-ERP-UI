@@ -28,11 +28,11 @@ const CountryCreate = () => {
         <Grid item xs={12} sm={6} md={4}>
           <TextField
             fullWidth
-            label='Country Name Bangla'
+            label='Country Name BN'
             size='small'
-            placeholder='Country Name Bangla'
-            onChange={e => (dataState.country.countryNameUC = e.target.value)}
-            defaultValue={dataState.country.countryNameUC}
+            placeholder='Country Name BN'
+            onChange={e => (dataState.country.countryNameBN = e.target.value)}
+            defaultValue={dataState.country.countryNameBN}
           />
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
@@ -41,8 +41,8 @@ const CountryCreate = () => {
             label='Code'
             size='small'
             placeholder='Code'
-            onChange={e => (dataState.country.countryShortCode = e.target.value)}
-            defaultValue={dataState.country.countryShortCode}
+            onChange={e => (dataState.country.countryCode = e.target.value)}
+            defaultValue={dataState.country.countryCode}
           />
         </Grid>
       </Grid>
