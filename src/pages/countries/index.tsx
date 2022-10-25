@@ -9,7 +9,7 @@ import CountryCreateModal from 'src/views/countries/CountryCreateModal'
 import { CountryProvider } from 'src/context/CountryContext'
 import CountryPageHeader from 'src/views/countries/CountryPageHeader'
 
-const index = () => {
+const Index = () => {
 
   return (
     <Grid container spacing={3}>
@@ -28,4 +28,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

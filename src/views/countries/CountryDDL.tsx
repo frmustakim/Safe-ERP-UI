@@ -31,7 +31,7 @@ const CountryDDL = (props: any) => {
       >
         {dataState.countries.map(country => {
           return (
-            <MenuItem key={country.countryID} value={country.countryID}>
+            <MenuItem key={country.countryId} value={country.countryId}>
               {country.countryName}
             </MenuItem>
           )

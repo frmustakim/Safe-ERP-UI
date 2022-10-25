@@ -7,7 +7,7 @@ import DivisionsList from 'src/views/divisions/DivisionsList'
 import { DivisionProvider } from 'src/context/DivisionContext'
 
 
-const index = () => {
+const Index = () => {
   const [countryID, setCountryID] = useState(0)
   function handleSelectionUpdate(data: any) {
     setCountryID(data)
@@ -31,4 +31,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index
