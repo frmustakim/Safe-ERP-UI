@@ -1,9 +1,9 @@
-import React, { createContext, useEffect, useReducer } from 'react'
+import React, { createContext, useReducer } from 'react'
 import axios from 'axios'
 import { Country } from '../types/setup/Country'
 import { CountryEntity } from 'src/types/setup/CountryEntity'
 
-const url = 'http://localhost:5095/countries/'
+// const reqURL = 'https://localhost:5010'
 
 type State = {
   countries: Country[]
@@ -72,8 +72,9 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const getData = async () => {
     try {
-      const res = await axios.get('https://localhost:5010/api/v1/hrms/country')
-      console.log(res)
+      // const res = await axios.get('https://localhost:5010/api/v1/hrms/country')
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hrms/country`)
+      // console.log('text', process.env.NEXT_PUBLIC_API_URL)
       dispatch({
         type: 'LOAD_DATA',
         payload: res.data
@@ -84,7 +85,7 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
   }
   const getSingleData = async (countryID: number) => {
     try {
-      const res = await axios.get(`https://localhost:5010/api/v1/hrms/country/${countryID}`)
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hrms/country/${countryID}`)
       dispatch({
         type: 'LOAD_SINGLE_DATA',
         payload: res.data
@@ -95,7 +96,7 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
   }
   const postData = async (todo: Country) => {
     try {
-      const res = await axios.post<Country>('https://localhost:5010/api/v1/hrms/country', { ...todo })
+      const res = await axios.post<Country>(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hrms/country`, { ...todo })
       const returnData = res.data
       if (returnData != null) {
         getData()
@@ -106,7 +107,7 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
   }
   const putData = async (country: CountryEntity) => {
     try {
-      const res = await axios.put<CountryEntity>(`https://localhost:5010/api/v1/hrms/country`, {
+      const res = await axios.put<CountryEntity>(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hrms/country`, {
         ...country
       })
       console.log(res)
@@ -121,7 +122,7 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
   const removeData = async (id: number) => {
     try {
       // debugger
-      const res = await axios.delete<Country>(`https://localhost:5010/api/v1/hrms/country/${id}`)
+      const res = await axios.delete<Country>(`${process.env.NEXT_PUBLIC_API_URL}/api/v1/hrms/country/${id}`)
       const returnData = res.data
       if (returnData != null) {
         getData()
@@ -140,7 +141,7 @@ export const CountryProvider: React.FC<React.ReactNode> = ({ children }) => {
       console.error(e)
     }
   }
-  useEffect(() => {}, [])
+  // useEffect(() => {}, [])
 
   return (
     <CountryContext.Provider
